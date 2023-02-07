@@ -1,0 +1,70 @@
+#peter
+
+import random
+def lance_de():
+   de1 = random.randit(1, 6)
+   de2 = random.randit(1, 6)
+   de3 = random.randit(1, 6)
+   de4 = random.randit(1, 6)
+   if de1<de2 and de1<de3 and de1<de4:
+       print(de2+de3+de4)
+
+   elif de2<de1 and de2<de3 and de2<de4:
+       print(de1+de3+de4)
+
+   elif de3<de1 and de3<de2 and de3<de4:
+       print(de1+de2+de4)
+
+   elif de4<de1 and de4<de2 and de4<de3:
+       print(de1+de2+de3)
+
+class NPC:
+   def __init__(self):
+       self.force: lance_de()
+       self.Agilite: lance_de()
+       self.Constitution: lance_de()
+       self.Intelligence: lance_de()
+       self.Sagesse: lance_de()
+       self.Charisme: lance_de()
+       self.classe_armure: random.randit(1,12)
+       self.nom:str
+       self.race:str
+       self.espece:str
+       self.point_vies: random.randit(1,20)
+       self.profession:str
+
+   def afficher_caracteristique(self):
+       print(self.Force, self.Agilite,self.Constitution,self.Intelligence,self.Sagesse,self.Charisme,self.classe_armure,self.nom,self.race,self.espece,self.point_vie,self.profession)
+
+
+class kobold(NPC):
+   def __init__(self):
+       super().__init__()
+
+   def attaque(self,cible):
+       return
+
+   def subir_dommage(self,dommage):
+       self.point_vies -= dommage
+
+
+class Hero(NPC):
+   def __init__(self):
+       super().__init__()
+
+#si l'héro obtient 20, c’est une attaque critique
+   def attaque(self,cible):
+       lance_de = random.randint(1,20)
+       
+       # le héro réussit à toucher le monstre peu importe sa classe d’armure et donc subit un d8 de dommage.
+       if lance_de == 20:
+           cible.subir_dommage(random.randint(1,8))
+           
+  #Si l'héro obtient entre 2 et 19, on doit vérifier si le nombre est plus grand ou égal à la classe d’armure du monstre
+       if lance_de > 1 and < 20:
+           if lance_de>=cible.classe_armure:
+               cible.subir_dommage(random.randint(1,6))
+
+
+   def subir_dommage(self,dommage):
+       return
